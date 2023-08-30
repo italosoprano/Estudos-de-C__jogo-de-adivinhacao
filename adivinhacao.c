@@ -1,6 +1,5 @@
 #include <stdio.h>
-
-#define NUMERO_DE_TENTATIVAS 5
+#include <stdlib.h>
 
 int main(){
     //imprimir o cabecalho do jogo
@@ -12,32 +11,54 @@ int main(){
 
     int chute;
 
-    for(int i = 1; i <= NUMERO_DE_TENTATIVAS; i++) {
+    int ganhou = 0;
+
+    int tentativas = 0;
+
+    int pontos = 1000;
+
+    while (ganhou == 0) {
+        
+        printf("Tentativa %d \n", tentativas + 1);
         printf("Qual é o seu chute? \n");
-        printf("Tentativa %d de %d \n", i, NUMERO_DE_TENTATIVAS);
+
         scanf("%d", &chute);
         printf("Seu chute foi %d \n", chute);
 
+        if(chute < 0) {
+            printf("O numero não pode ser menor do que 0\n");
+
+            continue;
+        }
+        
         int acertou = (chute == numSecreto);
         int maior = (chute > numSecreto);
-        int menor = (chute < numSecreto);
 
         if (acertou){
             printf("Parabéns, você acertou!!\n");
             
-            break;
+            ganhou = 1;
         } 
 
         else if (maior){
             printf("Seu chute é maior que o numero secreto.\n");
+            printf("***************************************\n");
         } 
 
         else {
-            printf("Seu chute é menor que o numero secreto.\n");
+            printf("Seu chute é menor que o numero secreto.\n");                        printf("***************************************\n");
         }
+
+        tentativas++;
+
+        int pontosperdidos = abs(chute - numSecreto) / 2; 
+        pontos = pontos - pontosperdidos;
     }
 
     printf("Fim de jogo, obrigado por jogar!!!\n");
+    printf("Você acertou em %d tentativas\n", tentativas);
+    printf("Sua pontuação é %d\n", pontos);
+    printf("***************************************\n");
     
     return 0;
 }
@@ -46,6 +67,3 @@ int main(){
 printf("%d", numSecreto) --> "42", %d é uma mascara para o valor de variavel int.
 
 */
-
-for(int i = 1; i >= 10 ; i++)
-
