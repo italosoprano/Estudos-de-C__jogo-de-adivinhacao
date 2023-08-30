@@ -19,18 +19,22 @@ int main(){
         printf("Seu chute foi %d \n", chute);
 
         int acertou = (chute == numSecreto);
+        int maior = (chute > numSecreto);
+        int menor = (chute < numSecreto);
 
         if (acertou){
             printf("Parabéns, você acertou!!\n");
+            
             break;
-        } else {
-            int maior = chute > numSecreto;
-            if (maior){
-                printf("Seu chute é maior que o numero secreto.\n");
-            } else {
-                printf("Seu chute é menor que o numero secreto.\n");
-            }
         } 
+
+        else if (maior){
+            printf("Seu chute é maior que o numero secreto.\n");
+        } 
+
+        else {
+            printf("Seu chute é menor que o numero secreto.\n");
+        }
     }
 
     printf("Fim de jogo, obrigado por jogar!!!\n");
@@ -42,3 +46,6 @@ int main(){
 printf("%d", numSecreto) --> "42", %d é uma mascara para o valor de variavel int.
 
 */
+
+for(int i = 1; i >= 10 ; i++)
+
